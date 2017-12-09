@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FoxRoles.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class RoleController : Controller
     {
 
@@ -41,7 +41,7 @@ namespace FoxRoles.Controllers
 
 
         // GET: Role
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Index()
         {
             List<RoleViewModel> list = new List<RoleViewModel>();
@@ -50,7 +50,7 @@ namespace FoxRoles.Controllers
             return View(list);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
