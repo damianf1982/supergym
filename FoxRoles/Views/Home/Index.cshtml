@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Damian's Health Club</h1>
+    <p class="lead">Damian's Health Club App gives you a powerful, patterns-based way to build your fitness</p>
+  
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Damian's Health Club</h2>
+
+    </div>
+</div>
+    
+<div>
+    <table class="table">
+        @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <tr>
+                <td> <a href="~/ApplicationUsers"> <h3>User Accounts </h3>     </a></td>
+                <td> <a href="~/Account/Register"><h3>Register New User</h3>     </a></td>
+
+            </tr>
+    }
+}
+
+
+        @if (User.Identity.IsAuthenticated)
+    {
+        <tr>
+
+            <td> <a href="~/GymSessions"><h3> Gym Sessions </h3>      </a></td>
+
+        </tr>
+
+
+
+        <tr>
+            @*<td> <a href="~/Account/Login"> <h3> My Account </h3>     </a></td>*@
+            @*<td> <a href="~/Account/Login"><h3> View My Profile </h3>      </a></td>*@
+            <td> <a href="~/Bookings"><h3> Book a Gym Class</h3>      </a></td>
+        </tr>
+}
+
+    </table>
+</div>

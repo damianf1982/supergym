@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FoxRoles.Models.Profiles>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<tr>
+    <td> <a href="~/Profiles/Notes"> <h3>User Notes </h3>     </a></td>
+       
+
+</tr>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            Profile Number
+        </th>
+   
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+
+            </td>
+       
+            <td>|
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

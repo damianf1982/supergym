@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FoxRoles.Models.GymSessions>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+            @if (User.Identity.IsAuthenticated)
+                {
+                   if (User.IsInRole("Admin"))
+                   {
+        <p>
+                       @Html.ActionLink("Create New", "Create")
+        </p>
+
+                   }
+                }
+        <table class="table">
+            <tr>
+                <th>
+               
+                    Gym class Name
+                </th>
+                <th>
+                  
+                    Availability
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GymSessionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RemainingPlaces)
+                </td>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                    }
+                }
+
+                    </tr>
+            }
+
+        </table>

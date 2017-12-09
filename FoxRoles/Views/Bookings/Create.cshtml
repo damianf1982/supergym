@@ -1,0 +1,63 @@
+﻿@model FoxRoles.Models.Bookings
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Bookings</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.GymSessionName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <h4>Gym Class Name</h4>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.GymSessionName, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                @Html.DropDownListFor(model => model.GymSessionId, ViewBag.GymSessionsList as SelectList,
+               "----Select----", new { @class = "control-label col-md-2" })
+
+                @*@Html.DropDownList("gymsessions", "Select Session")*@
+                @Html.ValidationMessageFor(model => model.GymSessionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.GymSessionName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">*@
+        @*@Html.EditorFor(model => model.GymSessionName, new { htmlAttributes = new { @class = "form-control" } })*@
+        @*@Html.DropDownList("gymsessions", "Select Session")*@
+
+        @*@Html.DropDownListFor(model => model.GymSessionName, ViewBag.GymSessionsList as SelectList,
+            "----Select----", new { @class = "control-label col-md-2" })*@
+
+
+        @*</div>
+            </div>*@
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
